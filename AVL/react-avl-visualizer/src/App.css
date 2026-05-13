@@ -1,0 +1,177 @@
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #111827;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  width: 100%;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.description {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 14px;
+  color: #9ca3af;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+input {
+  padding: 10px;
+  width: 200px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  background-color: #2563eb;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #1d4ed8;
+}
+
+.multi-controls {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.multi-controls input {
+  width: 300px;
+}
+
+.tree-visualization {
+  width: 100%;
+  height: 600px;
+  border: 2px solid #374151;
+  background-color: #1f2937;
+  border-radius: 10px;
+}
+
+/* SVG Elements */
+.tree-node {
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.tree-node:hover .node-circle {
+  fill: #1d4ed8;
+  stroke: #93c5fd;
+  stroke-width: 3;
+}
+
+.tree-node.highlighted .node-circle {
+  fill: #fbbf24;
+  stroke: #f59e0b;
+  stroke-width: 4;
+  animation: highlight-pulse 2s ease-in-out;
+}
+
+.node-circle {
+  fill: #3b82f6;
+  stroke: white;
+  stroke-width: 2;
+  transition: all 0.3s ease;
+}
+
+.node-value {
+  fill: white;
+  font-size: 16px;
+  text-anchor: middle;
+  dominant-baseline: middle;
+  pointer-events: none;
+}
+
+.node-height {
+  fill: #fbbf24;
+  font-size: 10px;
+  text-anchor: middle;
+  dominant-baseline: middle;
+  pointer-events: none;
+}
+
+.node-balance {
+  fill: #10b981;
+  font-size: 10px;
+  text-anchor: middle;
+  dominant-baseline: middle;
+  pointer-events: none;
+}
+
+.tree-edge {
+  stroke: #6b7280;
+  stroke-width: 3;
+  stroke-linecap: round;
+  transition: all 0.3s ease;
+}
+
+.tree-edge:hover {
+  stroke: #3b82f6;
+  stroke-width: 4;
+}
+
+.message {
+  text-align: center;
+  margin: 10px 0;
+  min-height: 20px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.message.success {
+  color: #10b981;
+}
+
+.message.error {
+  color: #ef4444;
+}
+
+.message.info {
+  color: #3b82f6;
+}
+
+/* Animations */
+@keyframes highlight-pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
