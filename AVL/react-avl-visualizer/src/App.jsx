@@ -14,12 +14,13 @@ function App() {
   const [message, setMessage] = useState('')
   const [visualTreeData, setVisualTreeData] = useState(null)
   const [highlightedNode, setHighlightedNode] = useState(null)
+  const [treeRefresh, setTreeRefresh] = useState(0) // Force re-render on tree changes
 
   // Update visual tree data whenever tree changes
   useEffect(() => {
     const newVisualData = layoutTree(tree.root, 800, 600)
     setVisualTreeData(newVisualData)
-  }, [tree.root])
+  }, [treeRefresh])
 
   const showMessage = (text, type = 'info') => {
     setMessage({ text, type })
@@ -41,6 +42,7 @@ function App() {
 
     // Insert into AVL tree
     tree.insert(value)
+    setTreeRefresh(prev => prev + 1) // Trigger re-render
 
     // Highlight the inserted node temporarily
     setHighlightedNode(value)
@@ -66,6 +68,7 @@ function App() {
 
     // Delete from AVL tree
     tree.delete(value)
+    setTreeRefresh(prev => prev + 1) // Trigger re-render
 
     // Clear input and show success
     setInputValue("")
@@ -74,6 +77,7 @@ function App() {
 
   const handleClear = () => {
     tree.clear()
+    setTreeRefresh(prev => prev + 1) // Trigger re-render
     setHighlightedNode(null)
     showMessage("Tree cleared successfully", "info")
   }
@@ -81,6 +85,7 @@ function App() {
   const handleRandom = () => {
     const randomValue = Math.floor(Math.random() * 100)
     tree.insert(randomValue)
+    setTreeRefresh(prev => prev + 1) // Trigger re-render
 
     // Highlight the inserted node
     setHighlightedNode(randomValue)
@@ -107,6 +112,7 @@ function App() {
     }
 
     if (insertedCount > 0) {
+      setTreeRefresh(prev => prev + 1) // Trigger re-render
       setMultiInput("")
       showMessage(`Successfully inserted ${insertedCount} values`, "success")
     } else {
