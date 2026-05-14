@@ -85,21 +85,16 @@ This project is ready for deployment on Vercel, Netlify, or GitHub Pages.
 - Set output directory: `dist`
 
 ### GitHub Pages
-```bash
-npm install gh-pages --save-dev
-```
-Add to `package.json`:
-```json
-"homepage": "https://<your-username>.github.io/avl-tree-visualizer",
-"scripts": {
-  "predeploy": "npm run build",
-  "deploy": "gh-pages -d dist"
-}
-```
-Then run:
+This repository is already configured for GitHub Pages deployment.
+
+Run:
 ```bash
 npm run deploy
 ```
+
+After deployment, your site will be available at:
+
+`https://shaktidevkota.github.io/avl-tree-visualizer`
 
 ## 🛠 Future Improvements
 
